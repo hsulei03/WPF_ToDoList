@@ -8,12 +8,61 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d" Height="600" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
         <Grid Height="65" VerticalAlignment="Top" Background="#FF0694F7">
             <TextBlock Text="To Do" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="40,22,0,22" Foreground="#FFECE4E4" FontFamily="Consolas"></TextBlock>
             <fa:ImageAwesome Icon="List" Width="22" Foreground="White" Margin="13,0,1045,0" RenderTransformOrigin="-0.091,0.536"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
+                <Button x:Name="BtnClose" Click="BtnClose_Click" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <fa:ImageAwesome Icon="Close" Width="25" Foreground="White" HorizontalAlignment="Right"></fa:ImageAwesome>
+                </Button>
+            </StackPanel>
         </Grid>
-        <Grid Width="200" HorizontalAlignment="Left" Background="#FFECE4E4" Margin="0,65,0,0">
-            
+
+        <Grid Width="250" Margin="0,0,830,0" Grid.Row="1" Background="#FFEBECFB" HorizontalAlignment="Left">
+            <StackPanel>
+                <Grid Height="40">
+
+                </Grid>
+                <ListView>
+                    <ListViewItem Background="#FFEBECFB" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:FontAwesome Icon="Dashboard" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <TextBlock Text="我的一天" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Background="#FFEBECFB" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:FontAwesome Icon="Star" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <TextBlock Text="重要" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Background="#FFEBECFB" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:FontAwesome Icon="ThumbTack" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <TextBlock Text="已計劃" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Background="#FFEBECFB" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:FontAwesome Icon="User" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <TextBlock Text="已指派給您" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Background="#FFEBECFB" Height="40">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:FontAwesome Icon="Check" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <TextBlock Text="工作" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
         </Grid>
+        <ListBox HorizontalAlignment="Left" Height="535" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830"/>
+
     </Grid>
 </Window>

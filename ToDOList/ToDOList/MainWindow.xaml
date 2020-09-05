@@ -111,14 +111,14 @@
         <ItemsControl Name="TodoList" HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Margin="0,10,0 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <fa:ImageAwesome Icon="CircleOutline" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
-                        <TextBlock Text="測試用" Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding WorkContent}" Grid.Column="1" VerticalAlignment="Center"/>
                         <fa:ImageAwesome Icon="StarOutline" Grid.Column="2" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
                     </Grid>
                 </DataTemplate>

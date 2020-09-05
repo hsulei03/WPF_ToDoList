@@ -19,7 +19,7 @@ namespace ToDOList.Services
         {
             if(value.exception != null)
             {
-                string path = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string path = DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss");
                 path = path + ".txt";
                 File.WriteAllText(path, value.exception.ToString());
                 return path;

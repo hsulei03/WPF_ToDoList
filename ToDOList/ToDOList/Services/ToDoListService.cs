@@ -1,5 +1,5 @@
-﻿using DataLibrary.DB_Models;
-using DataLibrary.Repositories;
+﻿using DBLibrary.DBModel;
+using DBLibrary.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace ToDOList.Services
             var result = new OperationResult();
             try
             {
-                ToDoContactsModel context = new ToDoContactsModel();
+                ToDoModel context = new ToDoModel();
 
                 var repository = new ToDoRepository<WorkDetail>(context);
 
@@ -25,7 +25,7 @@ namespace ToDOList.Services
                     WorkContent = items.WorkContent,
                     Important = items.IsImportant ? "Y" : "N",
                     PlanDate = DateTime.Now,
-                    CreationDate = DateTime.Now,
+                    CreationDate =DateTime.Now,
                     LastUpdataDate = DateTime.Now
                 };
 

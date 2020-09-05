@@ -47,24 +47,26 @@ namespace ToDOList
 
         private void inputText_KeyDown(object sender, KeyEventArgs e)
         {
-            var vm = new ItemsViewModel();
-            if(e.Key == Key.Enter)
+            
+            if (e.Key == Key.Enter)
             {
                 if (inputText.Text == null) return;
+
+                var vm = new ItemsViewModel();
                 vm.WorkContent = inputText.Text;
                 vm.IsDown = false;
                 vm.IsImportant = false;
-            }
-            var service = new ToDoListService();
-            var result = service.AddJobs(vm);
-            if (result.IsSuccessful)
-            {
-                MessageBox.Show("成功");
-            }
-            else
-            {
-                var path = result.WriteLog();
-                MessageBox.Show($"發生錯誤，請參考{path}");
+                var service = new ToDoListService();
+                var result = service.AddJobs(vm);
+                if (result.IsSuccessful)
+                {
+                    MessageBox.Show("成功");
+                }
+                else
+                {
+                    var path = result.WriteLog();
+                    MessageBox.Show($"發生錯誤，請參考{path}");
+                }
             }
         }
     }

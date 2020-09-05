@@ -13,12 +13,8 @@ namespace TestDB
         {
             WorkDetail entity = new WorkDetail()
             {
-                Id = 2,
                 WorkContent = "22222",
-                Important = "Y",
-                PlanDate = DateTime.Now,
-                CreationDate = DateTime.Now,
-                LastUpdataDate = DateTime.Now
+                Important = "Y"
             };
 
             Class1 service = new Class1();

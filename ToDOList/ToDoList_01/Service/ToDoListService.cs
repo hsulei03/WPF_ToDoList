@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToDOList.ViewModel;
+using ToDoList_01.ViewModel;
 
-namespace ToDOList.Services
+namespace ToDoList_01.Service
 {
     public class ToDoListService
     {
@@ -30,7 +30,7 @@ namespace ToDOList.Services
                 context.SaveChanges();
                 result.IsSuccessful = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 result.IsSuccessful = false;
                 result.exception = ex;

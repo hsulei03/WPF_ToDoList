@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDOList", "ToDOList\ToDOList.csproj", "{D1C2524A-0C89-47B6-94F4-D5516375FF75}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLibrary", "DBLibrary\DBLibrary.csproj", "{5725705D-480A-4826-987F-ECE58B64EAFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDB", "TestDB\TestDB.csproj", "{131BB119-3CE5-4F40-ABE7-CA3C1797D671}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList_01", "ToDoList_01\ToDoList_01.csproj", "{DACABAC2-8F86-4CF9-A6C2-584CEF396B25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1C2524A-0C89-47B6-94F4-D5516375FF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1C2524A-0C89-47B6-94F4-D5516375FF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1C2524A-0C89-47B6-94F4-D5516375FF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1C2524A-0C89-47B6-94F4-D5516375FF75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5725705D-480A-4826-987F-ECE58B64EAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5725705D-480A-4826-987F-ECE58B64EAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5725705D-480A-4826-987F-ECE58B64EAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5725705D-480A-4826-987F-ECE58B64EAFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{131BB119-3CE5-4F40-ABE7-CA3C1797D671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{131BB119-3CE5-4F40-ABE7-CA3C1797D671}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{131BB119-3CE5-4F40-ABE7-CA3C1797D671}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{131BB119-3CE5-4F40-ABE7-CA3C1797D671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACABAC2-8F86-4CF9-A6C2-584CEF396B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACABAC2-8F86-4CF9-A6C2-584CEF396B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACABAC2-8F86-4CF9-A6C2-584CEF396B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACABAC2-8F86-4CF9-A6C2-584CEF396B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

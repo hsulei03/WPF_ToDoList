@@ -21,15 +21,5 @@ namespace DBLibrary.DBModel
         [Column(Order = 2)]
         [StringLength(1)]
         public string Important { get; set; }
-
-        public DateTime? PlanDate { get; set; }
-
-        [Key]
-        [Column(Order = 3)]
-        public DateTime CreationDate { get; set; }
-
-        [Key]
-        [Column(Order = 4)]
-        public DateTime LastUpdataDate { get; set; }
     }
 }

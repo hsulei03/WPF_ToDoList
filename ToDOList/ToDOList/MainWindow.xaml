@@ -86,6 +86,7 @@
                     </VisualBrush>
                 </TextBox.Resources>
 
+                <!--樣式-->
                 <TextBox.Style>
                     <Style TargetType="TextBox">
                         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -106,7 +107,31 @@
 
             </TextBox>
         </Grid>
-        <ListBox HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830"/>
+
+        <ItemsControl Name="TodoList" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding}"/>
+                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        
+        <Grid HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="三"/>
+        </Grid>
 
     </Grid>
 </Window>

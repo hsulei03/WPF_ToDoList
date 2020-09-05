@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
 
         <Grid Height="65" VerticalAlignment="Top" Background="#FF0694F7">
-            <TextBlock Text="To Do" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="40,22,0,22" Foreground="#FFECE4E4" FontFamily="Consolas"></TextBlock>
-            <fa:ImageAwesome Icon="List" Width="22" Foreground="White" Margin="13,0,1045,0" RenderTransformOrigin="-0.091,0.536"/>
+            <fa:ImageAwesome Icon="Windows" Width="22" Foreground="White" Margin="10,0,1045,0" RenderTransformOrigin="-0.091,0.536"/>
+            <TextBlock Text="ToDo" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="50,22,0,22" Foreground="#FFECE4E4" FontFamily="Consolas"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
                 <Button x:Name="BtnClose" Click="BtnClose_Click" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}">
                     <fa:ImageAwesome Icon="Close" Width="25" Foreground="White" HorizontalAlignment="Right"></fa:ImageAwesome>

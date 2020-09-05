@@ -29,5 +29,18 @@ namespace ToDOList
         {
             Application.Current.Shutdown();
         }
+
+        private void ListMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = ListMenu.SelectedIndex;
+            
+            MessageBox.Show(index.ToString());
+            
+        }
+
+        private void inputText_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

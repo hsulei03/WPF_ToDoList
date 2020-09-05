@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDOList"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="ToDOList.MainWindow"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d" Height="600" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
@@ -28,8 +29,8 @@
                 <Grid Height="40">
 
                 </Grid>
-                <ListView>
-                    <ListViewItem Background="#FFEBECFB" Height="40">
+                <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged">
+                    <ListViewItem Background="#FFEBECFB" Height="40" Tag="我的一天">
                         <StackPanel Orientation="Horizontal">
                             <fa:FontAwesome Icon="Dashboard" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
                             <TextBlock Text="我的一天" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
@@ -62,7 +63,50 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <ListBox HorizontalAlignment="Left" Height="535" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830"/>
+
+        <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
+            <StackPanel Margin="10 0 0 0">
+                <TextBlock x:Name="TitleText" Text="{Binding ElementName=ListMenu, Path=SelectedItems}" FontSize="20"/>
+                <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="250,45,0,450" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <fa:FontAwesome Icon="plus" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+            <TextBox Name="inputText" Grid.Column="1" KeyDown="inputText_KeyDown">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="hinttext" TileMode="None" AlignmentX="Left" Stretch="None">
+                        <VisualBrush.Visual>
+                            <TextBlock Text="新增工作"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource hinttext}"/>
+                            </Trigger>
+
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource hinttext}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+
+            </TextBox>
+        </Grid>
+        <ListBox HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830"/>
 
     </Grid>
 </Window>

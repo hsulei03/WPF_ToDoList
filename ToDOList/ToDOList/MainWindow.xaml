@@ -32,31 +32,31 @@
                 <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged">
                     <ListViewItem Background="#FFEBECFB" Height="40" Tag="我的一天">
                         <StackPanel Orientation="Horizontal">
-                            <fa:FontAwesome Icon="Dashboard" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <fa:ImageAwesome Icon="SunOutline" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                             <TextBlock Text="我的一天" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Background="#FFEBECFB" Height="40">
                         <StackPanel Orientation="Horizontal">
-                            <fa:FontAwesome Icon="Star" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <fa:ImageAwesome Icon="Star" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                             <TextBlock Text="重要" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Background="#FFEBECFB" Height="40">
                         <StackPanel Orientation="Horizontal">
-                            <fa:FontAwesome Icon="ThumbTack" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <fa:ImageAwesome Icon="Calendar" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                             <TextBlock Text="已計劃" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Background="#FFEBECFB" Height="40">
                         <StackPanel Orientation="Horizontal">
-                            <fa:FontAwesome Icon="User" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <fa:ImageAwesome Icon="User" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                             <TextBlock Text="已指派給您" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Background="#FFEBECFB" Height="40">
                         <StackPanel Orientation="Horizontal">
-                            <fa:FontAwesome Icon="Check" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+                            <fa:ImageAwesome Icon="Home" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                             <TextBlock Text="工作" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                         </StackPanel>
                     </ListViewItem>
@@ -108,30 +108,21 @@
             </TextBox>
         </Grid>
 
-        <ItemsControl Name="TodoList" >
+        <ItemsControl Name="TodoList" HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding}"/>
-                        <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
+                        <fa:ImageAwesome Icon="CircleOutline" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
+                        <TextBlock Text="測試用" Grid.Column="1" VerticalAlignment="Center"/>
+                        <fa:ImageAwesome Icon="StarOutline" Grid.Column="2" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
-        
-        <Grid HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-            
-            <TextBlock Text="三"/>
-        </Grid>
-
     </Grid>
 </Window>

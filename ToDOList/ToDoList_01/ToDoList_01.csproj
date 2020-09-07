@@ -71,6 +71,8 @@
     <Compile Include="Service\OperationResult.cs" />
     <Compile Include="Service\ToDoListService.cs" />
     <Compile Include="ViewModel\ItemsViewModel.cs" />
+    <Compile Include="ViewModel\MuneModel.cs" />
+    <Compile Include="ViewModel\ToDoViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

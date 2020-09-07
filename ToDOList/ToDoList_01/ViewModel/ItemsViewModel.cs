@@ -8,8 +8,9 @@ namespace ToDoList_01.ViewModel
 {
     public class ItemsViewModel
     {
+        public int Id { get; set; }
         public string WorkContent { get; set; }
-        public bool IsDown { get; set; }
+        public bool Completed { get; set; }
         public bool IsImportant { get; set; }
     }
 }

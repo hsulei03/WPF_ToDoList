@@ -11,11 +11,20 @@ namespace DBLibrary.DBModel
     {
         public int Id { get; set; }
 
-        [Required]
         public string WorkContent { get; set; }
 
-        [Required]
         [StringLength(1)]
         public string Important { get; set; }
+
+        [StringLength(1)]
+        public string Complete { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? CreationDate { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? PlanDate { get; set; }
+
+        public DateTime LastUpdateDate { get; set; }
     }
 }

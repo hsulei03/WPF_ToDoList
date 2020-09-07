@@ -20,6 +20,11 @@ namespace DBLibrary.DBModel
                 .Property(e => e.Important)
                 .IsFixedLength()
                 .IsUnicode(false);
+
+            modelBuilder.Entity<WorkDetail>()
+                .Property(e => e.Complete)
+                .IsFixedLength()
+                .IsUnicode(false);
         }
     }
 }

@@ -29,44 +29,24 @@
                 <Grid Height="40">
 
                 </Grid>
-                <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged">
-                    <ListViewItem Background="#FFEBECFB" Height="40" Tag="我的一天">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="SunOutline" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                            <TextBlock Text="我的一天" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Background="#FFEBECFB" Height="40">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="Star" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                            <TextBlock Text="重要" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Background="#FFEBECFB" Height="40">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="Calendar" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                            <TextBlock Text="已計劃" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Background="#FFEBECFB" Height="40">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="User" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                            <TextBlock Text="已指派給您" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Background="#FFEBECFB" Height="40">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:ImageAwesome Icon="Home" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                            <TextBlock Text="工作" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListViewItem>
+                <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged" ItemsSource="{Binding Menus}" SelectedItem="{Binding Menus}" Background="#FFEBECFB">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="40">
+                                <StackPanel Orientation="Horizontal">
+                                    <fa:ImageAwesome Icon="{Binding Icon}" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
+                                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <StackPanel Margin="10 0 0 0">
-                <TextBlock x:Name="TitleText" Text="{Binding ElementName=ListMenu, Path=SelectedItems}" FontSize="20"/>
+                <TextBlock x:Name="TitleText" Text="我的一天" FontSize="20"/>
                 <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" />
             </StackPanel>
         </Grid>
@@ -76,12 +56,16 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <fa:FontAwesome Icon="plus" FontSize="30" VerticalAlignment="Center"></fa:FontAwesome>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnAdd" Click="BtnAdd_Click" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Tag="1">
+                    <fa:ImageAwesome Icon="PlusSquareOutline" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
+                </Button>
+            </StackPanel>
             <TextBox Name="inputText" Grid.Column="1" KeyDown="inputText_KeyDown">
                 <TextBox.Resources>
                     <VisualBrush x:Key="hinttext" TileMode="None" AlignmentX="Left" Stretch="None">
                         <VisualBrush.Visual>
-                            <TextBlock Text="新增工作"/>
+                            <TextBlock Text="新增工作" FontSize="20" VerticalAlignment="Center"/>
                         </VisualBrush.Visual>
                     </VisualBrush>
                 </TextBox.Resources>
@@ -108,7 +92,7 @@
             </TextBox>
         </Grid>
 
-        <ItemsControl Name="TodoList" HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
+        <ItemsControl Name="TodoList" HorizontalAlignment="Left" Height="450" Margin="250,85,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830" ItemsSource="{Binding ItemsInfo}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,10,0 0">
@@ -117,7 +101,9 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
-                        <fa:ImageAwesome Icon="CircleOutline" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
+                        <Button x:Name="BtnCompleted" Click="Completed_Click"  Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Tag="{Binding Id}">
+                            <fa:ImageAwesome Icon="CircleOutline" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
+                        </Button>
                         <TextBlock Text="{Binding WorkContent}" Grid.Column="1" VerticalAlignment="Center"/>
                         <fa:ImageAwesome Icon="StarOutline" Grid.Column="2" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
                     </Grid>

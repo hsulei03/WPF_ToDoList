@@ -26,9 +26,6 @@
 
         <Grid Width="250" Margin="0,0,830,0" Grid.Row="1" Background="#FFEBECFB" HorizontalAlignment="Left">
             <StackPanel>
-                <Grid Height="40">
-
-                </Grid>
                 <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged" ItemsSource="{Binding Menus}" SelectedItem="{Binding Menus}" Background="#FFEBECFB">
                     <ListView.ItemTemplate>
                         <DataTemplate>

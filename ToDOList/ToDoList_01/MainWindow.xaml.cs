@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FontAwesome.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -138,8 +139,9 @@ namespace ToDoList_01
 
         private void Completed_Click(object sender, RoutedEventArgs e)
         {
-            Button jobId = (Button)sender;
-            var service = new ToDoListService();
+            Button completed = (Button)sender;
+            var taskId = completed.Tag;
+             var service = new ToDoListService();
 
         }
     }

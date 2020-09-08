@@ -41,27 +41,7 @@ namespace ToDoList_01.Service
 
             return result;
         }
-        //public ObservableCollection<ItemsViewModel> GetAllJobs()
-        //{
-        //    ToDoModel context = new ToDoModel();
-        //    var repository = new ToDoRepository<WorkDetail>(context);
-        //    var dateString = DateTime.Now.ToString("yyyy-MM-dd");
-        //    var result = new ObservableCollection<ItemsViewModel>();
-        //    var data = repository.GetAll();
-        //    foreach (var item in data)
-        //    {
-        //        result.Add(
-        //            new ItemsViewModel
-        //            {
-        //                Id = item.Id,
-        //                WorkContent = item.WorkContent,
-        //                Completed = item.Complete == "Y" ? true : false,
-        //                IsImportant = item.Important == "Y" ? true : false
-        //            });
-        //    }
 
-        //    return result;
-        //}
         public OperationResult AddJobs(ItemsViewModel items)
         {
             var result = new OperationResult();

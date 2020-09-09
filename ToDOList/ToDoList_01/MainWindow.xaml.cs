@@ -1,6 +1,7 @@
 ﻿using FontAwesome.WPF;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,12 +32,14 @@ namespace ToDoList_01
     }
     public partial class MainWindow : Window
     {
-
+        private ObservableCollection<ItemsViewModel> itemViewModel;
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new ToDoViewModel();
-            GetMyday();
+            itemViewModel = GetMyday();
+            TodoList.ItemsSource = itemViewModel;
+            ListMenu.SelectedIndex = 0;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -50,28 +53,7 @@ namespace ToDoList_01
             ListView listView = (ListView)sender;
             IEnumerable<MenuModel> items = (IEnumerable<MenuModel>)listView.ItemsSource;
             TitleText.Text = items.ToArray()[ListMenu.SelectedIndex].Title;
-            switch (index)
-            {
-                case MenuOptions.myday:
-                    GetMyday();
-                    break;
-                case MenuOptions.important:
-                    //GetImportant();
-                    break;
-                case MenuOptions.planned:
-                    //GetPlanned();
-                    break;
-                case MenuOptions.assignedToMe:
-                    //GetAssigendToMe();
-                    break;
-                case MenuOptions.work:
-                    GetWorks();
-                    break;
-                default:
-                    break;
-            }
-                
-            
+            Show(index);
         }
 
         private void inputText_KeyDown(object sender, KeyEventArgs e)
@@ -86,13 +68,12 @@ namespace ToDoList_01
                 }
                 else
                 {
-                    AddJobs();
+                    AddTask();
                 }
             }
         }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var ddd = BtnAdd.Tag;
             if (inputText.Text == "")
             {
                 MessageBox.Show("工作內容不可為空");
@@ -100,33 +81,81 @@ namespace ToDoList_01
             }
             else
             {
-                AddJobs();
+                AddTask();
+            }
+        }
+        private void Completed_Click(object sender, RoutedEventArgs e)
+        {
+            Button completed = (Button)sender;
+            var taskId = completed.Tag;
+            var service = new ToDoListService();
+            var result = service.Completed((int)taskId);
+            var target = itemViewModel.FirstOrDefault((x) => x.Id == (int)taskId);
+            if (result.IsSuccessful)
+            {
+                //成功再改變畫面
+                var index = (MenuOptions)ListMenu.SelectedIndex;
+                Show(index);
+            }
+            else
+            {
+                var path = result.WriteLog();
+                MessageBox.Show($"發生錯誤，請參考{path}");
             }
         }
 
-        private void GetWorks()
+        private void BtnImportant_Click(object sender, RoutedEventArgs e)
+        {
+            Button completed = (Button)sender;
+            var taskId = completed.Tag;
+            var service = new ToDoListService();
+            var result = service.Important((int)taskId);
+            var target = itemViewModel.FirstOrDefault((x) => x.Id == (int)taskId);
+            if (result.IsSuccessful)
+            {
+                //成功再改變畫面
+                var index = (MenuOptions)ListMenu.SelectedIndex;
+                Show(index);
+            }
+            else
+            {
+                var path = result.WriteLog();
+                MessageBox.Show($"發生錯誤，請參考{path}");
+            }
+        }
+
+        private ObservableCollection<ItemsViewModel> GetTasks()
         {
             var service = new ToDoListService();
             var dateString = string.Empty;
-            TodoList.ItemsSource = service.GetJobList(dateString);
+            var result = service.GetTaskList(dateString);
+            return result;
         }
-
-        private void GetMyday()
+        private ObservableCollection<ItemsViewModel> GetMyday()
         {
             var service = new ToDoListService();
             var dateString = DateTime.Now.ToString("yyyy-MM-dd");
-            TodoList.ItemsSource = service.GetJobList(dateString);
+            var result = service.GetTaskList(dateString);
+            return result;
+        }
+        private ObservableCollection<ItemsViewModel> GetImportant()
+        {
+            var service = new ToDoListService();
+            var result = service.GetImportant();
+            return result;
         }
 
-        private void AddJobs()
+        private void AddTask()
         {
             var vm = new ItemsViewModel();
             vm.WorkContent = inputText.Text;
             var service = new ToDoListService();
-            var result = service.AddJobs(vm);
+            //存入資料庫
+            var result = service.AddTasks(vm);
             if (result.IsSuccessful)
             {
-                GetMyday();
+                //成功再改變畫面
+                itemViewModel.Add(vm);
             }
             else
             {
@@ -136,18 +165,33 @@ namespace ToDoList_01
             inputText.Text = string.Empty;
 
         }
-
-        private void Completed_Click(object sender, RoutedEventArgs e)
+        private void Show(MenuOptions index)
         {
-            Button completed = (Button)sender;
-            var taskId = completed.Tag;
-             var service = new ToDoListService();
-
+            switch (index)
+            {
+                case MenuOptions.myday:
+                    itemViewModel = GetMyday();
+                    TodoList.ItemsSource = itemViewModel;
+                    break;
+                case MenuOptions.important:
+                    itemViewModel = GetImportant();
+                    TodoList.ItemsSource = itemViewModel;
+                    break;
+                case MenuOptions.planned:
+                    //GetPlanned();
+                    break;
+                case MenuOptions.assignedToMe:
+                    //GetAssigendToMe();
+                    break;
+                case MenuOptions.work:
+                    itemViewModel = GetTasks();
+                    TodoList.ItemsSource = itemViewModel;
+                    break;
+                default:
+                    break;
+            }
         }
 
-        private void BtnImportant_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }

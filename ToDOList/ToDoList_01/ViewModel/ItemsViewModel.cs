@@ -12,5 +12,6 @@ namespace ToDoList_01.ViewModel
         public string WorkContent { get; set; }
         public bool Completed { get; set; }
         public bool IsImportant { get; set; }
+        
     }
 }

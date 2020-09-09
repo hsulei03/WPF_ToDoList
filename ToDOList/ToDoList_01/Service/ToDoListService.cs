@@ -25,7 +25,7 @@ namespace ToDoList_01.Service
             }
             else
             {
-                data = repository.GetAll().Where((x)=> x.CreationDate.ToString() == dateString);
+                data = repository.GetAll().Where((x)=> x.CreationDate.ToString() == dateString && x.PlanDate == null);
             }
             foreach (var item in data)
             {
@@ -34,6 +34,7 @@ namespace ToDoList_01.Service
                     {   
                         Id = item.Id,
                         WorkContent = item.WorkContent,
+                        PlanedDate = item.PlanDate,
                         Completed = item.Complete == "Y" ? true : false,
                         IsImportant = item.Important == "Y" ? true : false
                     });
@@ -57,6 +58,7 @@ namespace ToDoList_01.Service
                     {
                         Id = item.Id,
                         WorkContent = item.WorkContent,
+                        PlanedDate = item.PlanDate,
                         Completed = item.Complete == "Y" ? true : false,
                         IsImportant = item.Important == "Y" ? true : false
                     });
@@ -65,6 +67,29 @@ namespace ToDoList_01.Service
             return result;
         }
 
+        public ObservableCollection<ItemsViewModel> GetPlan()
+        {
+            ToDoModel context = new ToDoModel();
+
+            var repository = new ToDoRepository<WorkDetail>(context);
+            var result = new ObservableCollection<ItemsViewModel>();
+            IQueryable<WorkDetail> data;
+            data = repository.GetAll().Where((x) => x.PlanDate!=null && x.Complete == "N");
+            foreach (var item in data)
+            {
+                result.Add(
+                    new ItemsViewModel
+                    {
+                        Id = item.Id,
+                        WorkContent = item.WorkContent,
+                        PlanedDate = item.PlanDate,
+                        Completed = item.Complete == "Y" ? true : false,
+                        IsImportant = item.Important == "Y" ? true : false
+                    });
+            }
+
+            return result;
+        }
 
         public OperationResult AddTasks(ItemsViewModel items)
         {
@@ -79,7 +104,7 @@ namespace ToDoList_01.Service
                     Important = items.IsImportant ? "Y" : "N",
                     Complete = items.Completed ? "Y" : "N",
                     CreationDate = DateTime.Now,
-                    PlanDate = DateTime.Now,
+                    PlanDate = items.PlanedDate,
                     LastUpdateDate = DateTime.Now
                 };
 

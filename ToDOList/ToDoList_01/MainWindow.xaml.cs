@@ -37,8 +37,6 @@ namespace ToDoList_01
         {
             InitializeComponent();
             this.DataContext = new ToDoViewModel();
-            itemViewModel = GetMyday();
-            TodoList.ItemsSource = itemViewModel;
             ListMenu.SelectedIndex = 0;
         }
 
@@ -50,6 +48,7 @@ namespace ToDoList_01
         private void ListMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var index =(MenuOptions)ListMenu.SelectedIndex;
+
             ListView listView = (ListView)sender;
             IEnumerable<MenuModel> items = (IEnumerable<MenuModel>)listView.ItemsSource;
             TitleText.Text = items.ToArray()[ListMenu.SelectedIndex].Title;
@@ -145,10 +144,20 @@ namespace ToDoList_01
             return result;
         }
 
+        private ObservableCollection<ItemsViewModel> GetPlan()
+        {
+            var service = new ToDoListService();
+            var result = service.GetPlan();
+            return result;
+        }
         private void AddTask()
         {
             var vm = new ItemsViewModel();
             vm.WorkContent = inputText.Text;
+            if(ListMenu.SelectedIndex == (int)MenuOptions.planned)
+            {
+                vm.PlanedDate = DateTime.Now;
+            }
             var service = new ToDoListService();
             //存入資料庫
             var result = service.AddTasks(vm);
@@ -178,10 +187,12 @@ namespace ToDoList_01
                     TodoList.ItemsSource = itemViewModel;
                     break;
                 case MenuOptions.planned:
-                    //GetPlanned();
+                    itemViewModel = GetPlan();
+                    TodoList.ItemsSource = itemViewModel; 
                     break;
                 case MenuOptions.assignedToMe:
                     //GetAssigendToMe();
+                    MessageBox.Show("目前無功能");
                     break;
                 case MenuOptions.work:
                     itemViewModel = GetTasks();

@@ -10,8 +10,19 @@ namespace ToDoList_01.ViewModel
     {
         public int Id { get; set; }
         public string WorkContent { get; set; }
+        public DateTime? PlanedDate { get; set; }
         public bool Completed { get; set; }
         public bool IsImportant { get; set; }
+        public string PlanStatus
+        {
+            get
+            {
+                if (PlanedDate == null) return "NoPlan";
+                if (PlanedDate < DateTime.Now) return "Delay";
+                return "DueDate";
+            }
+       
+        }
         
     }
 }

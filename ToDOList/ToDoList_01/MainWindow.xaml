@@ -43,7 +43,7 @@
 
         <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <StackPanel Margin="10 0 0 0">
-                <TextBlock x:Name="TitleText" Text="我的一天" FontSize="20"/>
+                <TextBlock x:Name="TitleText" FontSize="20" FontWeight="Bold"/>
                 <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" />
             </StackPanel>
         </Grid>
@@ -78,7 +78,6 @@
                             <Trigger Property="Text" Value="">
                                 <Setter Property="Background" Value="{StaticResource hinttext}"/>
                             </Trigger>
-
                             <Trigger Property="Text" Value="{x:Null}">
                                 <Setter Property="Background" Value="{StaticResource hinttext}"/>
                             </Trigger>
@@ -98,6 +97,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
                         <Button  x:Name="BtnCompleted" Click="Completed_Click" Tag="{Binding Id}">
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -119,8 +122,43 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <TextBlock Text="{Binding WorkContent}" Grid.Column="1" VerticalAlignment="Center" FontSize="20"/>
-                        <Button Grid.Column="2" x:Name="BtnImportant" Click="BtnImportant_Click"  Tag="{Binding Id}">
+                        <TextBlock Grid.Column="1">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="15"/>
+                                    <Setter Property="Text" Value="{Binding WorkContent}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Completed}" Value="false">
+                                            <Setter Property="TextDecorations" Value="{x:Null}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Completed}" Value="true">
+                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="10"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding PlanStatus}" Value="DueDate">
+                                            <Setter Property="Text" Value="今日將到期"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PlanStatus}" Value="Delay">
+                                            <Setter Property="Text" Value="已過期"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding PlanStatus}" Value="NoPlan">
+                                            <Setter Property="Text" Value="{x:Null}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <Button Grid.Column="2" x:Name="BtnImportant" Click="BtnImportant_Click" Tag="{Binding Id}">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/FontAwesome.WPF;component/#FontAwesome"/>

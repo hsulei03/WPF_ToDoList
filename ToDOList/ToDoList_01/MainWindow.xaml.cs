@@ -154,7 +154,11 @@ namespace ToDoList_01
         {
             var vm = new ItemsViewModel();
             vm.WorkContent = inputText.Text;
-            if(ListMenu.SelectedIndex == (int)MenuOptions.planned)
+            if (ListMenu.SelectedIndex == (int)MenuOptions.important)
+            {
+                vm.IsImportant = true;
+            }
+            if (ListMenu.SelectedIndex == (int)MenuOptions.planned)
             {
                 vm.PlanedDate = DateTime.Now;
             }

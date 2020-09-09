@@ -48,9 +48,10 @@ namespace ToDoList_01
         private void ListMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var index = (MenuOptions)ListMenu.SelectedIndex;
-            ListView listView = (ListView)sender;
-            IEnumerable<MenuModel> items = (IEnumerable<MenuModel>)listView.ItemsSource;
-            TitleText.Text = items.ToArray()[ListMenu.SelectedIndex].Title;
+            //這段太麻煩，--改用UI元素綁定
+            //ListView listView = (ListView)sender;
+            //IEnumerable<MenuModel> items = (IEnumerable<MenuModel>)listView.ItemsSource;
+            //TitleText.Text = items.ToArray()[ListMenu.SelectedIndex].Title;
             Show(index);
         }
 
@@ -185,6 +186,7 @@ namespace ToDoList_01
                 case MenuOptions.myday:
                     itemViewModel = GetMyday();
                     TodoList.ItemsSource = itemViewModel;
+                    
                     break;
                 case MenuOptions.important:
                     itemViewModel = GetImportant();

@@ -70,7 +70,6 @@ namespace ToDoList_01.Service
         public ObservableCollection<ItemsViewModel> GetPlan()
         {
             ToDoModel context = new ToDoModel();
-
             var repository = new ToDoRepository<WorkDetail>(context);
             var result = new ObservableCollection<ItemsViewModel>();
             IQueryable<WorkDetail> data;

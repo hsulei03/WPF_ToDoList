@@ -23,6 +23,5 @@ namespace ToDoList_01.ViewModel
             }
        
         }
-        
     }
 }

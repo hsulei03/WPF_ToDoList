@@ -10,6 +10,7 @@ namespace ToDoList_01.ViewModel
     {
         public string Title { get; set; }
         public string Icon { get; set; }
+        public int TaskCount { get; set; }
 
     }
 }

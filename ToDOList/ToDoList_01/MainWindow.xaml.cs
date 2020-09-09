@@ -47,8 +47,7 @@ namespace ToDoList_01
 
         private void ListMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var index =(MenuOptions)ListMenu.SelectedIndex;
-
+            var index = (MenuOptions)ListMenu.SelectedIndex;
             ListView listView = (ListView)sender;
             IEnumerable<MenuModel> items = (IEnumerable<MenuModel>)listView.ItemsSource;
             TitleText.Text = items.ToArray()[ListMenu.SelectedIndex].Title;

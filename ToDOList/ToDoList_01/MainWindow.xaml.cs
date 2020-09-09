@@ -164,7 +164,8 @@ namespace ToDoList_01
             if (result.IsSuccessful)
             {
                 //成功再改變畫面
-                itemViewModel.Add(vm);
+                var index = (MenuOptions)ListMenu.SelectedIndex;
+                Show(index);
             }
             else
             {

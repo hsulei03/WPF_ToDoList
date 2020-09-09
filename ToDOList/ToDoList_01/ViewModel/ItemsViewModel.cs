@@ -18,7 +18,7 @@ namespace ToDoList_01.ViewModel
             get
             {
                 if (PlanedDate == null) return "NoPlan";
-                if (PlanedDate < DateTime.Now) return "Delay";
+                if (PlanedDate < DateTime.Now.Date) return "Delay";
                 return "DueDate";
             }
        

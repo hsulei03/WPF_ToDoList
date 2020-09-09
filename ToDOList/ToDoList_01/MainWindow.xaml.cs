@@ -203,7 +203,6 @@ namespace ToDoList_01
                 case MenuOptions.myday:
                     itemViewModel = GetMyday();
                     TodoList.ItemsSource = itemViewModel;
-                    
                     break;
                 case MenuOptions.important:
                     itemViewModel = GetImportant();

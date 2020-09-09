@@ -34,8 +34,6 @@
                                     <fa:ImageAwesome Icon="{Binding Icon}" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                                     <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                                 </StackPanel>
-                                <!--綁不到總數-->
-                                <!--<TextBlock Text="{Binding TaskCount}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="220,0,0,0"></TextBlock>-->
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -46,7 +44,22 @@
         <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <StackPanel Margin="10 0 0 0">
                 <!--UI Element 的 Dependency Property 之間是可以互相 Binding 的-->
-                <TextBlock x:Name="TitleText" Text="{Binding ElementName=ListMenu,Path=SelectedItem.Title}" FontSize="20" FontWeight="Bold"/>
+                <!--Text="{Binding ElementName=TodoList,Path=ItemsSource.Count}"-->
+                <!--Text="{Binding ElementName=ListMenu,Path=SelectedItem.Title}"-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  x:Name="TitleText" Text="{Binding ElementName=ListMenu,Path=SelectedItem.Title}" FontSize="20" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding ElementName=TodoList,Path=ItemsSource.Count}"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left"
+                               Foreground="White"
+                               FontWeight="Bold" Background="#FFFF2401" FontFamily="Candara"
+                               />
+                </Grid>
                 <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" FontWeight="Bold"/>
             </StackPanel>
         </Grid>

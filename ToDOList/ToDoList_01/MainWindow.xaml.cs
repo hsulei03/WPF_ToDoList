@@ -144,5 +144,10 @@ namespace ToDoList_01
              var service = new ToDoListService();
 
         }
+
+        private void BtnImportant_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,7 +14,7 @@
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Grid Height="65" VerticalAlignment="Top" Background="#FF0694F7">
+        <Grid Height="65" VerticalAlignment="Top" Background="#1E90FF">
             <fa:ImageAwesome Icon="Windows" Width="22" Foreground="White" Margin="10,0,1045,0" RenderTransformOrigin="-0.091,0.536"/>
             <TextBlock Text="ToDo" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" Margin="50,22,0,22" Foreground="#FFECE4E4" FontFamily="Consolas"></TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 20 0">
@@ -44,7 +44,7 @@
         <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
             <StackPanel Margin="10 0 0 0">
                 <TextBlock x:Name="TitleText" FontSize="20" FontWeight="Bold"/>
-                <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" />
+                <TextBlock Text="{Binding Source={x:Static system:DateTime.Now},StringFormat=MMM d yyyy}" FontWeight="Bold" />
             </StackPanel>
         </Grid>
 
@@ -55,14 +55,14 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="BtnAdd" Click="BtnAdd_Click" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Tag="1">
-                    <fa:ImageAwesome Icon="PlusSquareOutline" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
+                    <fa:ImageAwesome Icon="PlusSquareOutline" Width="20" VerticalAlignment="Center" Foreground="#B0C4DE"></fa:ImageAwesome>
                 </Button>
             </StackPanel>
             <TextBox Name="inputText" Grid.Column="1" KeyDown="inputText_KeyDown">
                 <TextBox.Resources>
                     <VisualBrush x:Key="hinttext" TileMode="None" AlignmentX="Left" Stretch="None">
                         <VisualBrush.Visual>
-                            <TextBlock Text="新增工作" FontSize="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="新增工作" FontSize="20" VerticalAlignment="Center" Foreground="#B0C4DE"/>
                         </VisualBrush.Visual>
                     </VisualBrush>
                 </TextBox.Resources>
@@ -114,9 +114,11 @@
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Completed}" Value="false">
                                             <Setter Property="Content" Value="&#xf10c;"/>
+                                            <Setter Property="Foreground" Value="#B0C4DE"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding Completed}" Value="true">
                                             <Setter Property="Content" Value="&#xf05d;"/>
+                                            <Setter Property="Foreground" Value="#20B2AA"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -128,6 +130,8 @@
                                     <Setter Property="VerticalAlignment" Value="Center"/>
                                     <Setter Property="FontSize" Value="15"/>
                                     <Setter Property="Text" Value="{Binding WorkContent}"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                    <Setter Property="Foreground" Value="#0000CD"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Completed}" Value="false">
                                             <Setter Property="TextDecorations" Value="{x:Null}"/>
@@ -147,9 +151,11 @@
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding PlanStatus}" Value="DueDate">
                                             <Setter Property="Text" Value="今日將到期"/>
+                                            <Setter Property="Foreground" Value="Blue"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding PlanStatus}" Value="Delay">
                                             <Setter Property="Text" Value="已過期"/>
+                                            <Setter Property="Foreground" Value="Red"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding PlanStatus}" Value="NoPlan">
                                             <Setter Property="Text" Value="{x:Null}"/>
@@ -171,9 +177,11 @@
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsImportant}" Value="false">
                                             <Setter Property="Content" Value="&#xf006;"/>
+                                            <Setter Property="Foreground" Value="#B0C4DE"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding IsImportant}" Value="true">
                                             <Setter Property="Content" Value="&#xf005;"/>
+                                            <Setter Property="Foreground" Value="#FF4500"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

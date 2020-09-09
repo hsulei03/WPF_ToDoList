@@ -102,7 +102,15 @@
                             <fa:ImageAwesome Icon="CircleOutline" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
                         </Button>
                         <TextBlock Text="{Binding WorkContent}" Grid.Column="1" VerticalAlignment="Center"/>
-                        <fa:ImageAwesome Icon="StarOutline" Grid.Column="2" VerticalAlignment="Center" Width="15"></fa:ImageAwesome>
+                        <Button Content="&#xf006;"
+                                Style="{StaticResource FontAwesome}"
+                                VerticalAlignment="Center"
+                                Width="30"
+                                Height="30"
+                                Grid.Column="2"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

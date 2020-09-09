@@ -89,7 +89,6 @@ namespace ToDoList_01
             var taskId = completed.Tag;
             var service = new ToDoListService();
             var result = service.Completed((int)taskId);
-            var target = itemViewModel.FirstOrDefault((x) => x.Id == (int)taskId);
             if (result.IsSuccessful)
             {
                 //成功再改變畫面
@@ -109,7 +108,25 @@ namespace ToDoList_01
             var taskId = completed.Tag;
             var service = new ToDoListService();
             var result = service.Important((int)taskId);
-            var target = itemViewModel.FirstOrDefault((x) => x.Id == (int)taskId);
+            if (result.IsSuccessful)
+            {
+                //成功再改變畫面
+                var index = (MenuOptions)ListMenu.SelectedIndex;
+                Show(index);
+            }
+            else
+            {
+                var path = result.WriteLog();
+                MessageBox.Show($"發生錯誤，請參考{path}");
+            }
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Button completed = (Button)sender;
+            var taskId = completed.Tag;
+            var service = new ToDoListService();
+            var result = service.Delete((int)taskId);
             if (result.IsSuccessful)
             {
                 //成功再改變畫面

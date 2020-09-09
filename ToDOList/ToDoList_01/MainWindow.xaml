@@ -34,34 +34,13 @@
                                     <fa:ImageAwesome Icon="{Binding Icon}" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
                                     <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
                                 </StackPanel>
-                                <TextBlock Text="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="220,0,0,0"></TextBlock>
+                                <!--綁不到總數-->
+                                <!--<TextBlock Text="{Binding TaskCount}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="220,0,0,0"></TextBlock>-->
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-            <!--<StackPanel>
-                <ListView x:Name="ListMenu" SelectionChanged="ListMenu_SelectionChanged" Background="#FFEBECFB">
-                    <ListViewItem Tag="我的一天">
-                        <Grid Height="40">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="SunOutline" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                                <TextBlock Text="我的一天" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                            </StackPanel>
-                            <TextBlock  Text="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="220,0,0,0"></TextBlock>
-                        </Grid>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <Grid Height="40">
-                            <StackPanel Orientation="Horizontal">
-                                <fa:ImageAwesome Icon="Star" Width="20" VerticalAlignment="Center"></fa:ImageAwesome>
-                                <TextBlock Text="重要" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
-                            </StackPanel>
-                            <TextBlock  Text="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="220,0,0,0"></TextBlock>
-                        </Grid>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>-->
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="40" Margin="250,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="830">
@@ -211,7 +190,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Grid.Column="3" x:Name="BtnDelete" Tag="{Binding Id}">
+                        <Button Grid.Column="3" x:Name="BtnDelete" Click="BtnDelete_Click" Tag="{Binding Id}">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="TextElement.FontFamily" Value="pack://application:,,,/FontAwesome.WPF;component/#FontAwesome"/>

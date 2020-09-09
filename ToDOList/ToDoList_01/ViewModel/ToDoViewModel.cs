@@ -19,6 +19,5 @@ namespace ToDoList_01.ViewModel
             Menus.Add(new MenuModel { Title = "工作", Icon = "Home" });
         }
         public ObservableCollection<MenuModel> Menus { get; set; }
-        public ObservableCollection<ItemsViewModel> TaskList { get; set; }
     }
 }

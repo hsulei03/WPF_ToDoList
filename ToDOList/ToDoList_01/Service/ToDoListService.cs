@@ -141,7 +141,6 @@ namespace ToDoList_01.Service
 
             return result;
         }
-
         public OperationResult Important(int id)
         {
             var result = new OperationResult();
@@ -153,6 +152,27 @@ namespace ToDoList_01.Service
                 FindById.Important = FindById.Important == "N" ? "Y" : "N";
                 FindById.LastUpdateDate = DateTime.Now;
                 repository.Update(FindById);
+                context.SaveChanges();
+                result.IsSuccessful = true;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccessful = false;
+                result.exception = ex;
+            }
+
+            return result;
+        }
+
+        public OperationResult Delete(int id)
+        {
+            var result = new OperationResult();
+            try
+            {
+                ToDoModel context = new ToDoModel();
+                var repository = new ToDoRepository<WorkDetail>(context);
+                var FindById = repository.GetAll().Where((x) => x.Id == id).FirstOrDefault();
+                repository.Delete(FindById);
                 context.SaveChanges();
                 result.IsSuccessful = true;
             }
